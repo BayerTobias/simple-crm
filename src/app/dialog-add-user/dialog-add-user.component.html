@@ -1,0 +1,48 @@
+<h1 mat-dialog-title>Add User</h1>
+<div class="dialog-content" mat-dialog-content>
+  <div class="name-wrapper">
+    <mat-form-field appearance="fill">
+      <mat-label>First name</mat-label>
+      <input matInput placeholder="First name" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Last name</mat-label>
+      <input matInput placeholder="First name" />
+    </mat-form-field>
+  </div>
+
+  <div class="date-wrapper">
+    <mat-form-field class="full-width">
+      <mat-label>Choose a date</mat-label>
+      <input matInput [matDatepicker]="picker" />
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+  <div class="street-wrapper">
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>Street Address</mat-label>
+      <input matInput placeholder="Street Address" />
+    </mat-form-field>
+  </div>
+
+  <div class="city-wrapper">
+    <mat-form-field appearance="fill">
+      <mat-label>zip code</mat-label>
+      <input matNativeControl matInput placeholder="zip code" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>City name</mat-label>
+      <input matInput placeholder="City name" />
+    </mat-form-field>
+  </div>
+</div>
+<div class="dialog-actions" mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button cdkFocusInitial>Save</button>
+</div>
