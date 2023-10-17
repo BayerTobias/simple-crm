@@ -6,19 +6,23 @@ import {
   collection,
   onSnapshot,
 } from '@angular/fire/firestore';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FirestoreService {
   firestore: Firestore = inject(Firestore);
+  private usersSubject = new BehaviorSubject<any[]>([]);
+
+  users$ = this.usersSubject.asObservable();
 
   unsubUsers;
 
   users: any = [];
 
   constructor() {
-    this, (this.unsubUsers = this.subUsers());
+    this.unsubUsers = this.subUsers();
   }
 
   ngOnDestroy() {
@@ -26,9 +30,22 @@ export class FirestoreService {
   }
 
   subUsers() {
-    return onSnapshot(this.getUsersRef(), (user) => {
-      this.users.push(user);
-    });
+    return onSnapshot(
+      this.getUsersRef(),
+      (querySnapshot) => {
+        this.users = [];
+        querySnapshot.forEach((doc) => {
+          const user = doc.data();
+          this.users.push(user);
+          console.log(doc.id);
+        });
+
+        this.usersSubject.next(this.users);
+      },
+      (error) => {
+        console.error('Error getting users:', error);
+      }
+    );
   }
 
   getUsersRef() {

@@ -24,6 +24,19 @@
     </mat-form-field>
   </div>
 
+  <div class="mail-wrapper">
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>E-mail</mat-label>
+      <input
+        type="text"
+        [disabled]="sending"
+        [(ngModel)]="user.email"
+        matInput
+        placeholder="E-mail"
+      />
+    </mat-form-field>
+  </div>
+
   <div class="date-wrapper">
     <mat-form-field class="full-width">
       <mat-label>Choose a date</mat-label>
@@ -78,7 +91,9 @@
   </div>
 </div>
 <div class="dialog-actions" mat-dialog-actions>
-  <button [disabled]="sending" mat-button (click)="onNoClick()">Cancel</button>
+  <button [disabled]="sending" mat-button (click)="dialogRef.close()">
+    Cancel
+  </button>
   <button [disabled]="sending" mat-button cdkFocusInitial (click)="saveUser()">
     Save
   </button>

@@ -15,15 +15,11 @@ export class DialogAddUserComponent {
 
   firestoreService = inject(FirestoreService);
 
-  constructor(private dialogRef: MatDialogRef<DialogAddUserComponent>) {}
-
-  onNoClick() {
-    this.dialogRef.close();
-  }
+  constructor(public dialogRef: MatDialogRef<DialogAddUserComponent>) {}
 
   async saveUser() {
     this.sending = true;
-    this.user.birthDate = this.user.birthDate.getTime();
+    // this.user.birthDate = this.user.birthDate.getTime();
     await this.firestoreService.newUser(this.user.toJSON());
     this.sending = false;
     this.dialogRef.close();
