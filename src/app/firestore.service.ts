@@ -36,8 +36,8 @@ export class FirestoreService {
         this.users = [];
         querySnapshot.forEach((doc) => {
           const user = doc.data();
+          user['id'] = doc.id;
           this.users.push(user);
-          console.log(doc.id);
         });
 
         this.usersSubject.next(this.users);
