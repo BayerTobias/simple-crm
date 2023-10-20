@@ -3,6 +3,7 @@ import {
   Firestore,
   addDoc,
   doc,
+  getDoc,
   collection,
   onSnapshot,
 } from '@angular/fire/firestore';
@@ -58,5 +59,11 @@ export class FirestoreService {
 
   async newUser(data: {}) {
     await addDoc(this.getUsersRef(), data);
+  }
+
+  async getUserData(colId: string, userId: string) {
+    let user = await getDoc(this.getSingleUserRef(colId, userId));
+    let userData = user.data();
+    return userData;
   }
 }

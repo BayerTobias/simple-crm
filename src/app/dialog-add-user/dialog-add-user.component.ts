@@ -19,7 +19,7 @@ export class DialogAddUserComponent {
 
   async saveUser() {
     this.sending = true;
-    // this.user.birthDate = this.user.birthDate.getTime();
+    this.user.birthDate = this.user.birthDate.getTime();
     await this.firestoreService.newUser(this.user.toJSON());
     this.sending = false;
     this.dialogRef.close();

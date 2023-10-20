@@ -1,0 +1,49 @@
+.user-detail-header {
+  height: 250px;
+  display: flex;
+  justify-content: flex-end;
+
+  .info-wrapper {
+    display: flex;
+    gap: 16px;
+    padding: 16px;
+
+    > img {
+      height: 100px;
+      width: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    > div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      > a {
+        text-decoration: none;
+        color: white;
+      }
+
+      > h2 {
+        margin: 0;
+      }
+    }
+  }
+}
+
+.user-detail-content {
+  margin-top: 36px;
+
+  > mat-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+  }
+}
+
+.pos-top-right {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}

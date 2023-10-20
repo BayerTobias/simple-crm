@@ -1,0 +1,30 @@
+<mat-card class="user-detail-header">
+  <div class="info-wrapper">
+    <img src="./assets/img/profile.png" alt="profile" />
+    <div>
+      <h2>{{ user.firstName }} {{ user.lastName }}</h2>
+      <a href="mailto: email@email.de">{{ user.email }}</a>
+    </div>
+  </div>
+</mat-card>
+
+<mat-card class="user-detail-content">
+  <mat-card-content>
+    <button [matMenuTriggerFor]="menu" mat-icon-button class="pos-top-right">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button (click)="editUser()" mat-menu-item>Edit user</button>
+    </mat-menu>
+    <div>
+      <h2>Address:</h2>
+      {{ user.firstName }} {{ user.lastName }} <br />
+      {{ user.address }} <br />
+      {{ user.zipCode }} {{ user.city }}
+    </div>
+    <div>
+      <h2>Personal Data:</h2>
+      Birthdate: {{ user.birthDate }}
+    </div>
+  </mat-card-content>
+</mat-card>

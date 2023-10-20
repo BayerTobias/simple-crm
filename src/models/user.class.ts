@@ -3,20 +3,18 @@ export class User {
   lastName: string;
   email: string;
   birthDate: any;
-  adress: string;
+  address: string;
   zipCode: string;
   city: string;
-  id: string;
 
   constructor(obj?: any) {
     this.firstName = obj ? obj.firstName : '';
     this.lastName = obj ? obj.lastName : '';
     this.email = obj ? obj.email : '';
-    this.birthDate = obj ? obj.birthDate : '';
-    this.adress = obj ? obj.firstadressName : '';
+    this.birthDate = obj ? this.getFormatedDate(obj.birthDate) : '';
+    this.address = obj ? obj.address : '';
     this.zipCode = obj ? obj.zipCode : '';
     this.city = obj ? obj.city : '';
-    this.id = '';
   }
 
   public toJSON() {
@@ -25,10 +23,17 @@ export class User {
       lastName: this.lastName,
       email: this.email,
       birthDate: this.birthDate,
-      adress: this.adress,
+      address: this.address,
       zipCode: this.zipCode,
       city: this.city,
-      id: this.id,
     };
+  }
+
+  getFormatedDate(birthDate: number) {
+    return new Date(birthDate).toLocaleDateString(undefined, {
+      month: 'short',
+      day: '2-digit',
+      year: 'numeric',
+    });
   }
 }
