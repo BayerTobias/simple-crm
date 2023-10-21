@@ -27,6 +27,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
+import { DialogEditUserComponent } from './dialog-edit-user/dialog-edit-user.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { MatMenuModule } from '@angular/material/menu';
     UserComponent,
     DialogAddUserComponent,
     UserDetailComponent,
+    DialogEditUserComponent,
   ],
   imports: [
     BrowserModule,

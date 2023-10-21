@@ -4,6 +4,7 @@ import {
   addDoc,
   doc,
   getDoc,
+  updateDoc,
   collection,
   onSnapshot,
 } from '@angular/fire/firestore';
@@ -15,8 +16,10 @@ import { BehaviorSubject } from 'rxjs';
 export class FirestoreService {
   firestore: Firestore = inject(Firestore);
   private usersSubject = new BehaviorSubject<any[]>([]);
+  private singleUserDataSubject = new BehaviorSubject<any | null>(null);
 
   users$ = this.usersSubject.asObservable();
+  singleUserData$ = this.singleUserDataSubject.asObservable();
 
   unsubUsers;
 
@@ -59,6 +62,10 @@ export class FirestoreService {
 
   async newUser(data: {}) {
     await addDoc(this.getUsersRef(), data);
+  }
+
+  async editUser(colId: string, userId: string, data: {}) {
+    await updateDoc(this.getSingleUserRef(colId, userId), data);
   }
 
   async getUserData(colId: string, userId: string) {

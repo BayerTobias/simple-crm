@@ -1,0 +1,24 @@
+section {
+  position: relative;
+
+  mat-progress-bar {
+    position: absolute;
+    top: 0;
+  }
+}
+
+.dialog-content {
+  .name-wrapper {
+    display: flex;
+    gap: 16px;
+  }
+
+  .city-wrapper {
+    display: flex;
+    gap: 16px;
+  }
+}
+
+.dialog-actions {
+  padding: 8px 24px;
+}

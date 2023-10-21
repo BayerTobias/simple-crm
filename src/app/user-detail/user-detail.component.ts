@@ -2,6 +2,10 @@ import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/models/user.class';
 import { FirestoreService } from '../firestore.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.component';
+import { Firestore } from '@angular/fire/firestore';
+import { onSnapshot } from '@firebase/firestore';
 
 @Component({
   selector: 'app-user-detail',
@@ -9,14 +13,32 @@ import { FirestoreService } from '../firestore.service';
   styleUrls: ['./user-detail.component.scss'],
 })
 export class UserDetailComponent {
-  firestoreService = inject(FirestoreService);
-
+  firestore: Firestore = inject(Firestore);
   userId!: string;
   user: User = new User();
 
-  constructor(private route: ActivatedRoute) {
+  unsubUser;
+
+  constructor(
+    private route: ActivatedRoute,
+    public dialog: MatDialog,
+    private firestoreService: FirestoreService
+  ) {
     this.setUserId();
-    this.getUser();
+    this.unsubUser = this.subUser('users', this.userId);
+  }
+
+  ngOnDestroy() {
+    this.unsubUser();
+  }
+
+  subUser(colId: string, userId: string) {
+    return onSnapshot(
+      this.firestoreService.getSingleUserRef(colId, userId),
+      (snapshot) => {
+        this.user = new User(snapshot.data());
+      }
+    );
   }
 
   setUserId() {
@@ -25,13 +47,11 @@ export class UserDetailComponent {
     });
   }
 
-  async getUser() {
-    let userData = await this.firestoreService.getUserData(
-      'users',
-      this.userId
-    );
-    this.user = new User(userData);
-  }
+  openEditUserDialog() {
+    console.log(this.user);
 
-  editUser() {}
+    this.dialog.open(DialogEditUserComponent, {
+      data: { user: new User(this.user), userId: this.userId },
+    });
+  }
 }
