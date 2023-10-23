@@ -67,10 +67,4 @@ export class FirestoreService {
   async editUser(colId: string, userId: string, data: {}) {
     await updateDoc(this.getSingleUserRef(colId, userId), data);
   }
-
-  async getUserData(colId: string, userId: string) {
-    let user = await getDoc(this.getSingleUserRef(colId, userId));
-    let userData = user.data();
-    return userData;
-  }
 }
