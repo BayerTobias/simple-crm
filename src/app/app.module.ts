@@ -13,6 +13,8 @@ import { environment } from '../environments/environment';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -59,6 +61,7 @@ import { DialogEditUserComponent } from './dialog-edit-user/dialog-edit-user.com
     MatTableModule,
     MatCardModule,
     MatMenuModule,
+    NgxChartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
