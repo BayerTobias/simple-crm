@@ -13,3 +13,20 @@ body {
 .full-width {
   width: 100%;
 }
+
+// Pie Chart Styles
+.advanced-pie-legend
+  .legend-items-container
+  .legend-items
+  .legend-item
+  .item-value {
+  margin-top: 0px !important;
+}
+
+.mat-body,
+.mat-body-2,
+.mat-typography .mat-body,
+.mat-typography .mat-body-2,
+.mat-typography {
+  line-height: unset;
+}

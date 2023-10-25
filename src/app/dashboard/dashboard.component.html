@@ -1,14 +1,8 @@
-<ngx-charts-line-chart
-  [view]="view"
-  [scheme]="colorScheme"
-  [legend]="legend"
-  [showXAxisLabel]="showXAxisLabel"
-  [showYAxisLabel]="showYAxisLabel"
-  [xAxis]="xAxis"
-  [yAxis]="yAxis"
-  [xAxisLabel]="xAxisLabel"
-  [yAxisLabel]="yAxisLabel"
-  [timeline]="timeline"
-  [results]="multi"
->
-</ngx-charts-line-chart>
+<section>
+  <div class="chart-wrapper">
+    <app-line-chart [multi]="data"></app-line-chart>
+  </div>
+  <div class="chart-wrapper">
+    <app-pie-chart></app-pie-chart>
+  </div>
+</section>
