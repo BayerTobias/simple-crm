@@ -8,7 +8,7 @@ import { Component, Input } from '@angular/core';
 export class LineChartComponent {
   @Input() multi!: any[];
 
-  view: any[number] | undefined = [700, 400];
+  view: [number, number] | undefined = [700, 400];
 
   // options
   legend: boolean = true;

@@ -16,7 +16,7 @@ export class PieChartComponent {
       value: 94300,
     },
   ];
-  view: any[number] | undefined | any = [700, 400];
+  view: any[number] | undefined | any = [700, 300];
 
   // options
   gradient: boolean = true;

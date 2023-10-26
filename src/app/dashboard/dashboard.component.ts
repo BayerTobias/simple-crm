@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent {
+  newUsers: number = 168;
   data: any[] = [
     {
       name: 'FirmaXYZ',
