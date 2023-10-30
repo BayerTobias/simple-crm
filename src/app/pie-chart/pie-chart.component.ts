@@ -1,4 +1,9 @@
-import { Component } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  Renderer2,
+  ChangeDetectorRef,
+} from '@angular/core';
 
 @Component({
   selector: 'app-pie-chart',
@@ -16,7 +21,7 @@ export class PieChartComponent {
       value: 94300,
     },
   ];
-  view: any[number] | undefined | any = [700, 300];
+  view: any[number] | undefined;
 
   // options
   gradient: boolean = true;
@@ -28,17 +33,29 @@ export class PieChartComponent {
     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA'],
   };
 
-  constructor() {}
+  constructor(
+    private element: ElementRef,
+    private renderer: Renderer2,
+    private cdRef: ChangeDetectorRef
+  ) {}
 
-  // onSelect(data: string): void {
-  //   console.log('Item clicked', JSON.parse(JSON.stringify(data)));
-  // }
+  ngAfterViewInit() {
+    this.resizeChart();
 
-  // onActivate(data: string): void {
-  //   console.log('Activate', JSON.parse(JSON.stringify(data)));
-  // }
+    const resizeObserver = new ResizeObserver(() => {
+      this.resizeChart();
+    });
 
-  // onDeactivate(data: string): void {
-  //   console.log('Deactivate', JSON.parse(JSON.stringify(data)));
-  // }
+    resizeObserver.observe(this.element.nativeElement.parentElement);
+  }
+
+  resizeChart() {
+    const parentElement = this.element.nativeElement.parentElement;
+    const width = parentElement.offsetWidth;
+    const height = parentElement.offsetHeight;
+
+    this.view = [width, height];
+
+    this.cdRef.detectChanges();
+  }
 }
