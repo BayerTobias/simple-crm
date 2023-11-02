@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { DialogAddUserComponent } from './dialog-add-user/dialog-add-user.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -32,6 +32,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { DialogEditUserComponent } from './dialog-edit-user/dialog-edit-user.component';
 import { LineChartComponent } from './line-chart/line-chart.component';
 import { PieChartComponent } from './pie-chart/pie-chart.component';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { PieChartComponent } from './pie-chart/pie-chart.component';
     DialogEditUserComponent,
     LineChartComponent,
     PieChartComponent,
+    LoginPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,6 +61,7 @@ import { PieChartComponent } from './pie-chart/pie-chart.component';
     MatDatepickerModule,
     MatNativeDateModule,
     FormsModule,
+    ReactiveFormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
     MatProgressBarModule,
