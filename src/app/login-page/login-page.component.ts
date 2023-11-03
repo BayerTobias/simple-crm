@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from 'firebase/auth';
 
 @Component({
   selector: 'app-login-page',
@@ -9,6 +14,8 @@ import { FormControl, Validators } from '@angular/forms';
 export class LoginPageComponent {
   email = new FormControl('', [Validators.required, Validators.email]);
   hide = true;
+
+  password!: string;
 
   getErrorMessage() {
     if (this.email.hasError('required')) {

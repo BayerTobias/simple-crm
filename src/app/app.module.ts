@@ -7,11 +7,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { DialogAddUserComponent } from './dialog-add-user/dialog-add-user.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 import { UserComponent } from './user/user.component';
+import { LoginPageComponent } from './login-page/login-page.component';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
-import { UserDetailComponent } from './user-detail/user-detail.component';
 
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
@@ -32,7 +33,6 @@ import { MatMenuModule } from '@angular/material/menu';
 import { DialogEditUserComponent } from './dialog-edit-user/dialog-edit-user.component';
 import { LineChartComponent } from './line-chart/line-chart.component';
 import { PieChartComponent } from './pie-chart/pie-chart.component';
-import { LoginPageComponent } from './login-page/login-page.component';
 
 @NgModule({
   declarations: [
