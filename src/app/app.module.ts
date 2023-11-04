@@ -10,9 +10,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { UserComponent } from './user/user.component';
 import { LoginPageComponent } from './login-page/login-page.component';
-import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
+
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { provideAuth, getAuth } from '@angular/fire/auth';
 
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
@@ -49,6 +51,9 @@ import { PieChartComponent } from './pie-chart/pie-chart.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirestore(() => getFirestore()),
+    provideAuth(() => getAuth()),
     BrowserAnimationsModule,
     MatToolbarModule,
     MatIconModule,
@@ -62,8 +67,6 @@ import { PieChartComponent } from './pie-chart/pie-chart.component';
     MatNativeDateModule,
     FormsModule,
     ReactiveFormsModule,
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideFirestore(() => getFirestore()),
     MatProgressBarModule,
     MatTableModule,
     MatCardModule,

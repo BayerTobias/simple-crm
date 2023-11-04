@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAddUserComponent } from '../dialog-add-user/dialog-add-user.component';
 import { FirestoreService } from '../firestore.service';
@@ -9,9 +9,10 @@ import { FirestoreService } from '../firestore.service';
   styleUrls: ['./user.component.scss'],
 })
 export class UserComponent {
-  firestoreService = inject(FirestoreService);
-
-  constructor(public dialog: MatDialog) {}
+  constructor(
+    public dialog: MatDialog,
+    private firestoreService: FirestoreService
+  ) {}
 
   displayedColumns: string[] = ['Name', 'E-mail'];
   dataSource = this.firestoreService.users$;

@@ -1,9 +1,8 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import {
   Firestore,
   addDoc,
   doc,
-  getDoc,
   updateDoc,
   collection,
   onSnapshot,
@@ -14,7 +13,6 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class FirestoreService {
-  firestore: Firestore = inject(Firestore);
   private usersSubject = new BehaviorSubject<any[]>([]);
   private singleUserDataSubject = new BehaviorSubject<any | null>(null);
 
@@ -25,7 +23,7 @@ export class FirestoreService {
 
   users: any = [];
 
-  constructor() {
+  constructor(private firestore: Firestore) {
     this.unsubUsers = this.subUsers();
   }
 

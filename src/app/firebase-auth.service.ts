@@ -4,16 +4,29 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from 'firebase/auth';
+import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FirebaseAuthService {
-  constructor() {}
+  constructor(private router: Router) {}
 
-  auth = getAuth();
+  registerWithEmailAndPassword(email: string, password: string) {}
 
-  registerWithEmailAndPassword(email: string, password: string) {
-    createUserWithEmailAndPassword(this.auth, email, password);
+  async loginWithEmailAndPassword(email: string, password: string) {
+    const auth = getAuth();
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      console.log('login successfull:', userCredential);
+      // this.router.navigate(['/dashboard']);
+    } catch (err) {
+      console.error(err);
+    }
   }
 }
