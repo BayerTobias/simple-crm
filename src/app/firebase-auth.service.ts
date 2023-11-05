@@ -1,25 +1,25 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import {
-  getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from 'firebase/auth';
 import { Router } from '@angular/router';
-import { environment } from 'src/environments/environment';
+import { Auth } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FirebaseAuthService {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private auth: Auth) {}
 
   registerWithEmailAndPassword(email: string, password: string) {}
 
   async loginWithEmailAndPassword(email: string, password: string) {
-    const auth = getAuth();
+    console.log(email, password);
+
     try {
       const userCredential = await signInWithEmailAndPassword(
-        auth,
+        this.auth,
         email,
         password
       );

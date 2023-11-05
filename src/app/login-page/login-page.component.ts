@@ -25,6 +25,8 @@ export class LoginPageComponent {
 
   loginWithEmailAndPassword() {
     const email = this.email.value || '';
+    console.log(this.password);
+
     this.authService.loginWithEmailAndPassword(email, this.password);
   }
 }
