@@ -12,7 +12,18 @@ import { Auth } from '@angular/fire/auth';
 export class FirebaseAuthService {
   constructor(private router: Router, private auth: Auth) {}
 
-  registerWithEmailAndPassword(email: string, password: string) {}
+  async registerWithEmailAndPassword(email: string, password: string) {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        this.auth,
+        email,
+        password
+      );
+      console.log('user created', userCredential);
+    } catch (err) {
+      console.error(err);
+    }
+  }
 
   async loginWithEmailAndPassword(email: string, password: string) {
     console.log(email, password);
@@ -24,7 +35,7 @@ export class FirebaseAuthService {
         password
       );
       console.log('login successfull:', userCredential);
-      // this.router.navigate(['/dashboard']);
+      this.router.navigate(['/dashboard']);
     } catch (err) {
       console.error(err);
     }

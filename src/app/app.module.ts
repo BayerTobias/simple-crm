@@ -35,6 +35,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { DialogEditUserComponent } from './dialog-edit-user/dialog-edit-user.component';
 import { LineChartComponent } from './line-chart/line-chart.component';
 import { PieChartComponent } from './pie-chart/pie-chart.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { PieChartComponent } from './pie-chart/pie-chart.component';
     LineChartComponent,
     PieChartComponent,
     LoginPageComponent,
+    SignUpComponent,
   ],
   imports: [
     BrowserModule,
